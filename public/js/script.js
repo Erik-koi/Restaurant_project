@@ -59,7 +59,7 @@ if (settingsBtn) {
 }
 
 function openLogin() {
-  window.location.href = "login.html";
+  window.location.href = "pages/login.html";
 }
 
 const accountBtn = document.getElementById("accountBtn");

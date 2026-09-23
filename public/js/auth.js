@@ -95,7 +95,7 @@ function handleRegistration(event) {
   setMessage("Registration successful! You are now logged in.", "success");
 
   setTimeout(() => {
-    window.location.href = "index.html";
+    window.location.href = "../index.html";
   }, 800);
 }
 
@@ -120,7 +120,7 @@ function handleLogin(event) {
     setMessage("Login successful!", "success");
 
     setTimeout(() => {
-      window.location.href = "adminpage.html";
+      window.location.href = "admin.html";
     }, 800);
     return;
   }
@@ -146,7 +146,7 @@ function handleLogin(event) {
   setMessage("Login successful!", "success");
 
   setTimeout(() => {
-    window.location.href = "index.html";
+    window.location.href = "../index.html";
   }, 800);
 }
 

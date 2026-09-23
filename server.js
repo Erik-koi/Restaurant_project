@@ -6,13 +6,19 @@ const path = require("path");
 const app = express();
 const PORT = 3000;
 const API = "https://media2.edu.metropolia.fi/restaurant/api/v1";
-const favoritesFile = path.join(__dirname, "favorites.json");
+const publicDirectory = path.join(__dirname, "public");
+const dataDirectory = path.join(__dirname, "data");
+const favoritesFile = path.join(dataDirectory, "favorites.json");
 
 app.use(cors());
 app.use(express.json());
-app.use(express.static(__dirname));
+app.use(express.static(publicDirectory));
 
 function ensureFavoritesFile() {
+  if (!fs.existsSync(dataDirectory)) {
+    fs.mkdirSync(dataDirectory, { recursive: true });
+  }
+
   if (!fs.existsSync(favoritesFile)) {
     fs.writeFileSync(favoritesFile, JSON.stringify({}, null, 2));
   }
