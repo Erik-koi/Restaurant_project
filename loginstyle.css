@@ -1,0 +1,131 @@
+@font-face {
+  font-family: "CustomFont3";
+  src: url("fonts/PlayfairDisplay-Italic-VariableFont_wght.ttf")
+    format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.login-page {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.login-page::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url("https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExd2F0ejV4cGNqOGpwZjRhZW5pYjF1MzJ2a3ByN2UxejA4Mzh3dHNtYiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/MXpeaPKb5lQyZWmocK/giphy.gif")
+    center center / cover no-repeat;
+  z-index: -1;
+}
+
+.login-box {
+  background: rgba(255, 255, 255, 0.92);
+  padding: 40px 36px;
+  border-radius: 16px;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.25);
+  width: 100%;
+  max-width: 360px;
+  backdrop-filter: blur(6px);
+}
+
+.login-box h1 {
+  text-align: center;
+  position: relative;
+  top: auto;
+  font-size: 100px;
+  font-weight: 200;
+  font-family: "CustomFont3", cursive;
+  color: black;
+  margin-bottom: 8px;
+}
+
+.login-box input {
+  width: 100%;
+  padding: 12px 14px;
+  margin-bottom: 18px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  font-size: 15px;
+  outline: none;
+  transition: border 0.2s;
+}
+
+.login-box input:focus {
+  border-color: #c0392b;
+}
+
+.login-box button {
+  width: 100%;
+  padding: 13px;
+  background: #c0392b;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.login-box button:hover {
+  background: #a93226;
+}
+
+.error {
+  color: #c0392b;
+  font-size: 14px;
+  text-align: center;
+  margin-bottom: 12px;
+  min-height: 20px;
+}
+
+.back-link,
+.register-link {
+  display: block;
+  text-align: center;
+  margin-top: 18px;
+  color: #666;
+  font-size: 14px;
+  text-decoration: none;
+}
+
+.back-link:hover,
+.register-link:hover {
+  color: #c0392b;
+}
+
+@media (max-width: 480px) {
+  .login-page {
+    padding: 20px 14px;
+  }
+
+  .login-box {
+    padding: 28px 20px;
+    border-radius: 14px;
+  }
+
+  .login-box h1 {
+    font-size: 62px;
+    margin-bottom: 10px;
+  }
+
+  .login-box input,
+  .login-box button {
+    font-size: 14px;
+    padding: 12px 13px;
+  }
+}

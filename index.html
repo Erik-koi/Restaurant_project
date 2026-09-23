@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>LaRestaurant</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="top-left">
+      <button class="icon-btn" id="accountBtn">
+        <img
+          src="https://cdn-icons-png.flaticon.com/128/1077/1077063.png"
+          alt="account"
+        />
+      </button>
+    </div>
+
+    <div class="top-right">
+      <button class="icon-btn" id="menuBtn">
+        <img
+          src="https://cdn-icons-png.flaticon.com/128/2782/2782949.png"
+          alt="menu"
+        />
+      </button>
+    </div>
+
+    <h1>LaRestaurant</h1>
+    <h2>French kitchen restaurant</h2>
+
+    <div class="slider">
+      <div class="slides">
+        <img
+          src="https://images.unsplash.com/photo-1453078977505-10c3e375c2a0?w=800&auto=format&fit=crop&q=80"
+          class="slide active"
+          alt="Food 1"
+        />
+        <img
+          src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=800&auto=format&fit=crop&q=80"
+          class="slide"
+          alt="Food 2"
+        />
+        <img
+          src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=800&auto=format&fit=crop&q=80"
+          class="slide"
+          alt="Food 3"
+        />
+        <img
+          src="https://images.unsplash.com/photo-1559339352-11d035aa65de?w=800&auto=format&fit=crop&q=80"
+          class="slide"
+          alt="Food 4"
+        />
+      </div>
+
+      <div class="dots">
+        <span class="dot active"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+      </div>
+    </div>
+
+    <div class="square-container">
+      <a href="menu.html" class="square">Menu</a>
+      <a href="BookTable.html" class="square">BookTable</a>
+      <a href="ContactInformation.html" class="square"> Contact Information </a>
+    </div>
+
+    <div class="overlay" id="overlay"></div>
+
+    <div class="popup" id="popup">
+      <div class="popup-top">
+        <h3>Menu</h3>
+        <button class="close" id="closeBtn">x</button>
+      </div>
+
+      <div class="popup-buttons">
+        <button class="menu-btn" id="settingsBtn">
+          <img
+            src="https://cdn-icons-png.flaticon.com/128/2099/2099058.png"
+            alt=""
+          />
+          Settings
+        </button>
+
+        <button class="menu-btn" id="accountPopupBtn">
+          <img
+            src="https://cdn-icons-png.flaticon.com/128/1077/1077063.png"
+            alt=""
+          />
+          Account
+        </button>
+
+        <button class="menu-btn logout" id="logoutBtn">
+          <img
+            src="https://cdn-icons-png.flaticon.com/128/1828/1828479.png"
+            alt=""
+          />
+          Logout
+        </button>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>

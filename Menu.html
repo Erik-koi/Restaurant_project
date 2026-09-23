@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Menu - LaRestaurant</title>
+    <link rel="stylesheet" href="menu.css" />
+  </head>
+  <body>
+    <div class="top-left">
+      <button class="icon-btn" id="accountBtn">
+        <img
+          src="https://cdn-icons-png.flaticon.com/128/1077/1077063.png"
+          alt="account"
+        />
+      </button>
+    </div>
+
+    <div class="top-right">
+      <a href="index.html" class="icon-btn">
+        <img
+          src="https://cdn-icons-png.flaticon.com/128/25/25694.png"
+          alt="home"
+        />
+      </a>
+    </div>
+
+    <h1>Menu</h1>
+    <p class="subtitle">Choose a restaurant</p>
+
+    <div id="favoritesBar" class="favorites-bar"></div>
+    <div id="restaurantList" class="restaurant-list"></div>
+
+    <div id="menuOverlay" class="menu-overlay hidden"></div>
+
+    <div
+      id="menuBox"
+      class="menu-box hidden"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="menuTitle"
+    >
+      <div class="menu-box-header">
+        <h2 id="menuTitle"></h2>
+        <button
+          id="favoriteRestaurantBtn"
+          class="favorite-restaurant-btn"
+          type="button"
+        >
+          Add to favorites
+        </button>
+      </div>
+      <div id="menuCourses"></div>
+      <button id="closeMenuBtn" class="close-menu-btn">Close</button>
+    </div>
+
+    <script src="script.js"></script>
+    <script src="menu.js"></script>
+  </body>
+</html>

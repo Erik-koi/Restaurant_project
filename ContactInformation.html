@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contact Information - LaRestaurant</title>
+    <link rel="stylesheet" href="coninf.css" />
+
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    />
+  </head>
+  <body>
+    <h1>Contact Information</h1>
+
+    <div class="filter-bar">
+      <label for="cityFilter">City:</label>
+      <select id="cityFilter">
+        <option value="">All Cities</option>
+      </select>
+      <span id="countLabel"></span>
+    </div>
+
+    <div id="map"></div>
+
+    <div id="restaurant-list" class="restaurant-list"></div>
+
+    <div class="modal-overlay" id="modalOverlay">
+      <div class="modal">
+        <button class="modal-close" id="modalClose">×</button>
+        <h2 id="modalTitle"></h2>
+        <p><strong>Address:</strong> <span id="modalAddress"></span></p>
+        <p><strong>City:</strong> <span id="modalCity"></span></p>
+        <p><strong>Postal Code:</strong> <span id="modalPostal"></span></p>
+        <p><strong>Phone:</strong> <span id="modalPhone"></span></p>
+        <p><strong>Company:</strong> <span id="modalCompany"></span></p>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="contact.js"></script>
+  </body>
+</html>

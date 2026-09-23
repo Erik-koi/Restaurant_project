@@ -1,0 +1,178 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: rgb(174, 168, 187);
+  font-family: Arial, sans-serif;
+  padding: 20px;
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 36px;
+  color: #222;
+}
+
+.filter-bar {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  max-width: 1200px;
+  margin: 0 auto 20px;
+  background: white;
+  padding: 14px 20px;
+  border-radius: 3px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.filter-bar label {
+  font-weight: bold;
+  color: #333;
+}
+
+.filter-bar select {
+  padding: 8px 12px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 15px;
+  cursor: pointer;
+}
+
+#countLabel {
+  margin-left: auto;
+  color: #666;
+  font-size: 14px;
+}
+
+#map {
+  height: 450px;
+  max-width: 1200px;
+  margin: 0 auto 30px;
+  border-radius: 3px;
+  overflow: hidden;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+.restaurant-list {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 16px;
+}
+
+.restaurant-card {
+  background: white;
+  padding: 18px;
+  border-radius: 3px;
+  cursor: pointer;
+  transition:
+    transform 0.2s,
+    box-shadow 0.2s;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.restaurant-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.restaurant-card h3 {
+  font-size: 18px;
+  margin-bottom: 8px;
+  color: #222;
+}
+
+.restaurant-card p {
+  font-size: 14px;
+  color: #555;
+  margin-bottom: 4px;
+}
+
+.restaurant-card .company {
+  margin-top: 8px;
+  font-weight: bold;
+  color: #c0392b;
+}
+
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  visibility: hidden;
+  transition: 0.25s;
+  z-index: 1000;
+  padding: 20px;
+}
+
+.modal-overlay.show {
+  opacity: 1;
+  visibility: visible;
+}
+
+.modal {
+  background: white;
+  padding: 30px;
+  border-radius: 16px;
+  max-width: 480px;
+  width: 100%;
+  position: relative;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+  transform: scale(0.9);
+  transition: transform 0.25s;
+}
+
+.modal-overlay.show .modal {
+  transform: scale(1);
+}
+
+.modal-close {
+  position: absolute;
+  top: 12px;
+  right: 16px;
+  background: none;
+  border: none;
+  font-size: 28px;
+  color: #999;
+  cursor: pointer;
+  line-height: 1;
+}
+
+.modal-close:hover {
+  color: #c0392b;
+}
+
+.modal h2 {
+  margin-bottom: 16px;
+  color: #222;
+}
+
+.modal p {
+  margin-bottom: 8px;
+  color: #444;
+  font-size: 15px;
+}
+
+@media (max-width: 600px) {
+  h1 {
+    font-size: 26px;
+  }
+  #map {
+    height: 320px;
+  }
+  .filter-bar {
+    flex-wrap: wrap;
+  }
+  #countLabel {
+    margin-left: 0;
+    width: 100%;
+  }
+}

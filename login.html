@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login - LaRestaurant</title>
+    <link rel="stylesheet" href="loginstyle.css" />
+  </head>
+  <body class="auth-page">
+    <div class="login-page">
+      <div class="login-box">
+        <h1>Login</h1>
+
+        <div
+          class="auth-message error"
+          id="authMessage"
+          aria-live="polite"
+        ></div>
+
+        <form id="loginForm">
+          <label for="loginEmail">Email or username</label>
+          <input
+            type="text"
+            id="loginEmail"
+            placeholder="Enter email or username"
+            required
+          />
+
+          <label for="loginPassword">Password</label>
+          <input
+            type="password"
+            id="loginPassword"
+            placeholder="Enter password"
+            required
+          />
+
+          <button type="submit">Login</button>
+        </form>
+        <a href="register.html" class="register-link"
+          >Don't have an account? Register</a
+        >
+        <a href="index.html" class="back-link">Back to Home</a>
+      </div>
+    </div>
+
+    <script src="auth.js"></script>
+  </body>
+</html>
