@@ -1,3 +1,18 @@
+@font-face {
+  font-family: "CustomFont4";
+  src: url("../assets/fonts/Fraunces-Italic-VariableFont_SOFT\,WONK\,opsz\,wght.ttf")
+    format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "IBMPlexSerif";
+  src: url("../assets/fonts/IBMPlexSerif-Regular.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -6,8 +21,43 @@
 
 body {
   background: rgb(174, 168, 187);
-  font-family: Arial, sans-serif;
+  font-family: "CustomFont4", Arial, sans-serif;
   padding: 20px;
+}
+
+.top-left,
+.top-right {
+  position: absolute;
+  top: 20px;
+  z-index: 10;
+}
+
+.top-left {
+  left: 30px;
+}
+
+.top-right {
+  right: 30px;
+}
+
+.icon-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 50px;
+  height: 50px;
+  padding: 8px;
+  background: transparent;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.icon-btn img {
+  display: block;
+  width: 30px;
+  height: 30px;
+  pointer-events: none;
 }
 
 h1 {
@@ -15,6 +65,7 @@ h1 {
   margin-bottom: 20px;
   font-size: 36px;
   color: #222;
+  font-family: "CustomFont4", Arial, sans-serif;
 }
 
 .filter-bar {
@@ -85,6 +136,8 @@ h1 {
   font-size: 18px;
   margin-bottom: 8px;
   color: #222;
+  font-family: "IBMPlexSerif", serif;
+  font-weight: normal;
 }
 
 .restaurant-card p {
@@ -153,6 +206,8 @@ h1 {
 .modal h2 {
   margin-bottom: 16px;
   color: #222;
+  font-family: "IBMPlexSerif", serif;
+  font-weight: normal;
 }
 
 .modal p {

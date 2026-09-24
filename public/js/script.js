@@ -58,23 +58,6 @@ if (settingsBtn) {
   });
 }
 
-function openLogin() {
-  window.location.href = "pages/login.html";
-}
-
-const accountBtn = document.getElementById("accountBtn");
-if (accountBtn) {
-  accountBtn.addEventListener("click", openLogin);
-}
-
-const accountPopupBtn = document.getElementById("accountPopupBtn");
-if (accountPopupBtn) {
-  accountPopupBtn.addEventListener("click", () => {
-    closeMenu();
-    openLogin();
-  });
-}
-
 const logoutBtn = document.getElementById("logoutBtn");
 if (logoutBtn) {
   logoutBtn.addEventListener("click", () => {
