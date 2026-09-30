@@ -2,6 +2,7 @@ const express = require("express");
 const cors = require("cors");
 const fs = require("fs");
 const path = require("path");
+const bcrypt = require("bcryptjs");
 
 const app = express();
 const PORT = 3000;
@@ -9,6 +10,7 @@ const API = "https://media2.edu.metropolia.fi/restaurant/api/v1";
 const publicDirectory = path.join(__dirname, "public");
 const dataDirectory = path.join(__dirname, "data");
 const favoritesFile = path.join(dataDirectory, "favorites.json");
+const usersFile = path.join(dataDirectory, "users.json");
 
 app.use(cors());
 app.use(express.json());
@@ -22,6 +24,33 @@ function ensureFavoritesFile() {
   if (!fs.existsSync(favoritesFile)) {
     fs.writeFileSync(favoritesFile, JSON.stringify({}, null, 2));
   }
+
+  if (!fs.existsSync(usersFile)) {
+    fs.writeFileSync(usersFile, JSON.stringify([], null, 2));
+  }
+}
+
+function readUsers() {
+  ensureFavoritesFile();
+  try {
+    const users = JSON.parse(fs.readFileSync(usersFile, "utf8"));
+    return Array.isArray(users) ? users : [];
+  } catch {
+    return [];
+  }
+}
+
+function writeUsers(users) {
+  ensureFavoritesFile();
+  fs.writeFileSync(usersFile, JSON.stringify(users, null, 2));
+}
+
+function publicUser(user) {
+  return {
+    name: user.name,
+    email: user.email,
+    registeredAt: user.registeredAt,
+  };
 }
 
 function readFavorites() {
@@ -50,6 +79,56 @@ function getFavoritesByEmail(email) {
 
 app.get("/health", (req, res) => {
   res.json({ ok: true });
+});
+
+app.post("/api/users", async (req, res) => {
+  const name = String(req.body.name || "").trim();
+  const email = normalizeEmail(req.body.email);
+  const password = String(req.body.password || "");
+
+  if (!name || !email || !password) {
+    return res.status(400).json({ error: "Name, email and password are required" });
+  }
+
+  if (!/^\S+@\S+\.\S+$/.test(email)) {
+    return res.status(400).json({ error: "Please enter a valid email address" });
+  }
+
+  if (password.length < 6) {
+    return res.status(400).json({ error: "Password must be at least 6 characters long" });
+  }
+
+  const users = readUsers();
+  if (users.some((user) => user.email === email)) {
+    return res.status(409).json({ error: "A user with that email already exists" });
+  }
+
+  const user = {
+    name,
+    email,
+    passwordHash: await bcrypt.hash(password, 10),
+    registeredAt: new Date().toISOString(),
+  };
+  users.push(user);
+  writeUsers(users);
+
+  res.status(201).json(publicUser(user));
+});
+
+app.post("/api/login", async (req, res) => {
+  const email = normalizeEmail(req.body.email);
+  const password = String(req.body.password || "");
+  const user = readUsers().find((item) => item.email === email);
+
+  if (!user || !(await bcrypt.compare(password, user.passwordHash))) {
+    return res.status(401).json({ error: "Invalid email or password" });
+  }
+
+  res.json(publicUser(user));
+});
+
+app.get("/api/users", (req, res) => {
+  res.json(readUsers().map(publicUser));
 });
 
 app.get("/api/favorites", (req, res) => {

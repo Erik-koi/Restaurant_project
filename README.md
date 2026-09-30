@@ -37,8 +37,11 @@ Open <http://localhost:3000> in a browser. The server prints its address when it
 - `GET /api/favorites?email=...` - favorites for an email
 - `POST /api/favorites` - add a favorite; JSON body: `{ "email": "...", "restaurantId": "..." }`
 - `DELETE /api/favorites/:restaurantId?email=...` - remove a favorite
+- `POST /api/users` - register a user; JSON body: `{ "name": "...", "email": "...", "password": "..." }`
+- `POST /api/login` - log in a registered user; JSON body: `{ "email": "...", "password": "..." }`
+- `GET /api/users` - list registered users without password data for the admin page
 
-Favorites are stored locally in `data/favorites.json`. Restaurant data is retrieved from the external Metropolia API.
+Users and favorites are stored locally in `data/`. Passwords are stored as bcrypt hashes. Restaurant data is retrieved from the external Metropolia API.
 
 ## Project structure
 

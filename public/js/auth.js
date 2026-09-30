@@ -1,6 +1,6 @@
-const USERS_KEY = "restaurant_users";
 const CURRENT_USER_KEY = "restaurant_current_user";
 const FAVORITES_PREFIX = "restaurant_favorites_";
+const AUTH_API = "/api";
 
 const authMessage = document.getElementById("authMessage");
 const loginForm = document.getElementById("loginForm");
@@ -13,18 +13,6 @@ function setMessage(message, type = "error") {
 
   authMessage.textContent = message;
   authMessage.className = `auth-message ${type}`;
-}
-
-function getUsers() {
-  try {
-    return JSON.parse(localStorage.getItem(USERS_KEY) || "[]");
-  } catch (error) {
-    return [];
-  }
-}
-
-function saveUsers(users) {
-  localStorage.setItem(USERS_KEY, JSON.stringify(users));
 }
 
 function saveCurrentUser(user) {
@@ -46,7 +34,7 @@ function validateEmail(email) {
   return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
 }
 
-function handleRegistration(event) {
+async function handleRegistration(event) {
   event.preventDefault();
 
   const name = document.getElementById("registerName").value.trim();
@@ -77,19 +65,25 @@ function handleRegistration(event) {
     return;
   }
 
-  const users = getUsers();
-  const existingUser = users.find((user) => user.email === email);
+  try {
+    const response = await fetch(`${AUTH_API}/users`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ name, email, password }),
+    });
+    const data = await response.json();
 
-  if (existingUser) {
-    setMessage("A user with that email already exists.", "error");
+    if (!response.ok) {
+      setMessage(data.error || "Registration failed.", "error");
+      return;
+    }
+
+    saveCurrentUser(data);
+    ensureUserFavorites(email);
+  } catch (error) {
+    setMessage("Could not connect to the server.", "error");
     return;
   }
-
-  const newUser = { name, email, password };
-  users.push(newUser);
-  saveUsers(users);
-  saveCurrentUser({ name, email });
-  ensureUserFavorites(email);
 
   registerForm.reset();
   setMessage("Registration successful! You are now logged in.", "success");
@@ -99,7 +93,7 @@ function handleRegistration(event) {
   }, 800);
 }
 
-function handleLogin(event) {
+async function handleLogin(event) {
   event.preventDefault();
 
   const email = document
@@ -130,18 +124,25 @@ function handleLogin(event) {
     return;
   }
 
-  const users = getUsers();
-  const user = users.find(
-    (item) => item.email === email && item.password === password,
-  );
+  try {
+    const response = await fetch(`${AUTH_API}/login`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ email, password }),
+    });
+    const data = await response.json();
 
-  if (!user) {
-    setMessage("Invalid email or password.", "error");
+    if (!response.ok) {
+      setMessage(data.error || "Invalid email or password.", "error");
+      return;
+    }
+
+    saveCurrentUser(data);
+    ensureUserFavorites(data.email);
+  } catch (error) {
+    setMessage("Could not connect to the server.", "error");
     return;
   }
-
-  saveCurrentUser({ name: user.name, email: user.email });
-  ensureUserFavorites(user.email);
   loginForm.reset();
   setMessage("Login successful!", "success");
 

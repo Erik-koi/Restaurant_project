@@ -67,3 +67,17 @@ if (logoutBtn) {
     alert("You have been logged out.");
   });
 }
+
+const accountBtn = document.getElementById("accountBtn");
+const accountPopupBtn = document.getElementById("accountPopupBtn");
+
+function openLoginPage() {
+  window.location.href = window.location.pathname.includes("/pages/")
+    ? "login.html"
+    : "pages/login.html";
+}
+
+if (accountBtn) accountBtn.addEventListener("click", openLoginPage);
+if (accountPopupBtn) {
+  accountPopupBtn.addEventListener("click", openLoginPage);
+}

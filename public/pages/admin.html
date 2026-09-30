@@ -4,14 +4,34 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Admin - LaRestaurant</title>
-    <link rel="stylesheet" href="../css/style.css" />
+    <link rel="stylesheet" href="../css/admin.css" />
   </head>
   <body>
-    <div class="admin-content">
-      <h1>Admin</h1>
-      <h2>welcome to the admin panel</h2>
-      <br />
-      <a href="../index.html" class="square">Back to Main</a>
-    </div>
+    <main class="admin-content">
+      <header class="admin-header">
+        <div>
+          <p class="eyebrow">LaRestaurant</p>
+          <h1>Registered users</h1>
+        </div>
+        <a href="../index.html" class="back-link">Back to Main</a>
+      </header>
+
+      <p id="usersMessage" class="users-message" aria-live="polite">
+        Loading users...
+      </p>
+      <section class="users-panel" aria-label="Registered users">
+        <table>
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Email</th>
+              <th>Registered</th>
+            </tr>
+          </thead>
+          <tbody id="usersTableBody"></tbody>
+        </table>
+      </section>
+    </main>
+    <script src="../js/admin.js"></script>
   </body>
 </html>
