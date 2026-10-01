@@ -27,9 +27,7 @@ async function loadUsers() {
       addCell(row, user.email);
       addCell(
         row,
-        user.registeredAt
-          ? new Date(user.registeredAt).toLocaleString()
-          : "-",
+        user.registeredAt ? new Date(user.registeredAt).toLocaleString() : "-",
       );
       usersTableBody.appendChild(row);
     });

@@ -53,8 +53,16 @@ if (overlay) overlay.addEventListener("click", closeMenu);
 const settingsBtn = document.getElementById("settingsBtn");
 if (settingsBtn) {
   settingsBtn.addEventListener("click", () => {
-    alert("Settings");
     closeMenu();
+    const inPagesDirectory = window.location.pathname.includes("/pages/");
+    const settingsPath = inPagesDirectory
+      ? "settings.html"
+      : "pages/settings.html";
+    const loginPath = inPagesDirectory
+      ? "login.html?redirect=settings.html"
+      : "pages/login.html?redirect=pages/settings.html";
+    const currentUser = localStorage.getItem("restaurant_current_user");
+    window.location.href = currentUser ? settingsPath : loginPath;
   });
 }
 

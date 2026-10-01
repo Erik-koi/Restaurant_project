@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Settings | LaRestaurant</title>
+    <link rel="stylesheet" href="../css/settings.css" />
+  </head>
+  <body>
+    <main class="settings-page">
+      <header class="settings-header">
+        <div>
+          <p class="eyebrow">Account</p>
+          <h1>Settings</h1>
+        </div>
+        <a class="back-link" href="../index.html">Back to home</a>
+      </header>
+
+      <section class="settings-panel" aria-labelledby="profile-heading">
+        <div class="panel-heading">
+          <h2 id="profile-heading">Profile</h2>
+          <p>Update the name shown on your account.</p>
+        </div>
+
+        <form id="settingsForm">
+          <label for="settingsName">Name</label>
+          <input id="settingsName" name="name" type="text" required />
+
+          <label for="settingsEmail">Email</label>
+          <input id="settingsEmail" name="email" type="email" readonly />
+
+          <button type="submit">Save changes</button>
+          <p
+            id="settingsMessage"
+            class="settings-message"
+            aria-live="polite"
+          ></p>
+        </form>
+      </section>
+    </main>
+    <script src="../js/settings.js"></script>
+  </body>
+</html>

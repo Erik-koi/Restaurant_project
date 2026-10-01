@@ -87,20 +87,28 @@ app.post("/api/users", async (req, res) => {
   const password = String(req.body.password || "");
 
   if (!name || !email || !password) {
-    return res.status(400).json({ error: "Name, email and password are required" });
+    return res
+      .status(400)
+      .json({ error: "Name, email and password are required" });
   }
 
   if (!/^\S+@\S+\.\S+$/.test(email)) {
-    return res.status(400).json({ error: "Please enter a valid email address" });
+    return res
+      .status(400)
+      .json({ error: "Please enter a valid email address" });
   }
 
   if (password.length < 6) {
-    return res.status(400).json({ error: "Password must be at least 6 characters long" });
+    return res
+      .status(400)
+      .json({ error: "Password must be at least 6 characters long" });
   }
 
   const users = readUsers();
   if (users.some((user) => user.email === email)) {
-    return res.status(409).json({ error: "A user with that email already exists" });
+    return res
+      .status(409)
+      .json({ error: "A user with that email already exists" });
   }
 
   const user = {
@@ -124,6 +132,25 @@ app.post("/api/login", async (req, res) => {
     return res.status(401).json({ error: "Invalid email or password" });
   }
 
+  res.json(publicUser(user));
+});
+
+app.patch("/api/users/:email", (req, res) => {
+  const email = normalizeEmail(req.params.email);
+  const name = String(req.body.name || "").trim();
+  const users = readUsers();
+  const user = users.find((item) => item.email === email);
+
+  if (!user) {
+    return res.status(404).json({ error: "User not found" });
+  }
+
+  if (!name) {
+    return res.status(400).json({ error: "Name is required" });
+  }
+
+  user.name = name;
+  writeUsers(users);
   res.json(publicUser(user));
 });
 

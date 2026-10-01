@@ -1,6 +1,9 @@
 const CURRENT_USER_KEY = "restaurant_current_user";
 const FAVORITES_PREFIX = "restaurant_favorites_";
 const AUTH_API = "/api";
+const redirectAfterLogin = new URLSearchParams(window.location.search).get(
+  "redirect",
+);
 
 const authMessage = document.getElementById("authMessage");
 const loginForm = document.getElementById("loginForm");
@@ -114,7 +117,7 @@ async function handleLogin(event) {
     setMessage("Login successful!", "success");
 
     setTimeout(() => {
-      window.location.href = "admin.html";
+      window.location.href = redirectAfterLogin || "admin.html";
     }, 800);
     return;
   }
@@ -147,7 +150,7 @@ async function handleLogin(event) {
   setMessage("Login successful!", "success");
 
   setTimeout(() => {
-    window.location.href = "../index.html";
+    window.location.href = redirectAfterLogin || "../index.html";
   }, 800);
 }
 
