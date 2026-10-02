@@ -69,6 +69,13 @@ body::before {
   pointer-events: none;
 }
 
+.icon-btn img.account-avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
 h1 {
   text-align: center;
   margin-top: 30px;

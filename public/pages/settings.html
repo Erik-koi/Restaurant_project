@@ -22,6 +22,35 @@
           <p>Update the name shown on your account.</p>
         </div>
 
+        <section class="avatar-section" aria-labelledby="avatar-heading">
+          <h3 id="avatar-heading">Profile photo</h3>
+          <div class="avatar-controls">
+            <img
+              id="avatarPreview"
+              class="avatar-preview"
+              src="https://cdn-icons-png.flaticon.com/128/1077/1077063.png"
+              alt="Profile photo preview"
+            />
+            <div class="avatar-actions">
+              <label class="file-button" for="avatarInput">Choose image</label>
+              <input id="avatarInput" type="file" accept="image/*" />
+              <div class="avatar-buttons">
+                <button id="saveAvatarButton" type="button" disabled>
+                  Save photo
+                </button>
+                <button
+                  id="removeAvatarButton"
+                  class="secondary-button"
+                  type="button"
+                >
+                  Remove photo
+                </button>
+              </div>
+            </div>
+          </div>
+          <p id="avatarMessage" class="settings-message" aria-live="polite"></p>
+        </section>
+
         <form id="settingsForm">
           <label for="settingsName">Name</label>
           <input id="settingsName" name="name" type="text" required />

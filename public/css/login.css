@@ -1,9 +1,15 @@
 @font-face {
-  font-family: "CustomFont3";
-  src: url("../assets/fonts/PlayfairDisplay-Italic-VariableFont_wght.ttf")
-    format("truetype");
+  font-family: "AccountScript";
+  src: url("../assets/fonts/MonsieurLaDoulaise-Regular.ttf") format("truetype");
   font-weight: normal;
-  font-style: normal;
+}
+
+@font-face {
+  font-family: "AccountText";
+  src: url("../assets/fonts/Fraunces-Italic-VariableFont_SOFT,WONK,opsz,wght.ttf")
+    format("truetype");
+  font-style: italic;
+  font-weight: 100 900;
 }
 
 * {
@@ -19,6 +25,8 @@
   justify-content: center;
   position: relative;
   overflow: hidden;
+  font-family: "AccountText", Georgia, serif;
+  font-style: italic;
 }
 
 .login-page::before {
@@ -47,9 +55,11 @@
   text-align: center;
   position: relative;
   top: auto;
-  font-size: 100px;
-  font-weight: 200;
-  font-family: "CustomFont3", cursive;
+  font-size: 88px;
+  line-height: 0.95;
+  font-weight: 400;
+  font-family: "AccountScript", cursive;
+  font-style: normal;
   color: black;
   margin-bottom: 8px;
 }
@@ -61,6 +71,8 @@
   border: 1px solid #ddd;
   border-radius: 10px;
   font-size: 15px;
+  font-family: inherit;
+  font-style: inherit;
   outline: none;
   transition: border 0.2s;
 }
@@ -77,6 +89,8 @@
   border: none;
   border-radius: 10px;
   font-size: 16px;
+  font-family: inherit;
+  font-style: inherit;
   cursor: pointer;
   transition: background 0.2s;
 }
@@ -119,7 +133,7 @@
   }
 
   .login-box h1 {
-    font-size: 62px;
+    font-size: 66px;
     margin-bottom: 10px;
   }
 

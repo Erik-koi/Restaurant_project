@@ -5,6 +5,14 @@
   font-style: normal;
 }
 
+@font-face {
+  font-family: "TaglineFont";
+  src: url("../assets/fonts/Fraunces-Italic-VariableFont_SOFT,WONK,opsz,wght.ttf")
+    format("truetype");
+  font-style: italic;
+  font-weight: 400 900;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -61,6 +69,13 @@ body::before {
   pointer-events: none;
 }
 
+.icon-btn img.account-avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
 h1 {
   text-align: center;
   position: relative;
@@ -77,6 +92,8 @@ h2 {
   top: -50px;
   color: black;
   font-weight: normal;
+  font-family: "TaglineFont", Georgia, serif;
+  font-style: italic;
 }
 
 .slider {

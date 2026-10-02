@@ -71,6 +71,12 @@ if (logoutBtn) {
   logoutBtn.addEventListener("click", () => {
     localStorage.removeItem("restaurant_current_user");
     localStorage.removeItem("currentUser");
+    const avatar = accountBtn?.querySelector("img");
+    if (avatar) {
+      avatar.src = "https://cdn-icons-png.flaticon.com/128/1077/1077063.png";
+      avatar.alt = "account";
+      avatar.classList.remove("account-avatar");
+    }
     closeMenu();
     alert("You have been logged out.");
   });
@@ -78,6 +84,28 @@ if (logoutBtn) {
 
 const accountBtn = document.getElementById("accountBtn");
 const accountPopupBtn = document.getElementById("accountPopupBtn");
+const accountAvatar = accountBtn?.querySelector("img");
+
+if (accountAvatar) {
+  try {
+    const currentUser = JSON.parse(
+      localStorage.getItem("restaurant_current_user") || "null",
+    );
+    const avatar = currentUser?.email
+      ? localStorage.getItem(
+          `restaurant_avatar_${currentUser.email.toLowerCase()}`,
+        )
+      : null;
+
+    if (avatar) {
+      accountAvatar.src = avatar;
+      accountAvatar.alt = `${currentUser.name || "User"} avatar`;
+      accountAvatar.classList.add("account-avatar");
+    }
+  } catch (error) {
+    localStorage.removeItem("restaurant_current_user");
+  }
+}
 
 function openLoginPage() {
   window.location.href = window.location.pathname.includes("/pages/")

@@ -82,6 +82,78 @@ h1 {
   font-size: 14px;
 }
 
+.avatar-section {
+  padding-bottom: 24px;
+  border-bottom: 1px solid #e5e7e9;
+  margin-bottom: 24px;
+}
+
+.avatar-section h3 {
+  margin: 0 0 16px;
+  font-size: 16px;
+}
+
+.avatar-controls {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.avatar-preview {
+  width: 88px;
+  height: 88px;
+  flex: 0 0 88px;
+  border: 1px solid #d9dde0;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.avatar-actions {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+#avatarInput {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  clip-path: inset(50%);
+}
+
+.file-button {
+  margin: 0;
+  color: #3f474e;
+  cursor: pointer;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.avatar-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+button:disabled {
+  background: #8a9298;
+  cursor: not-allowed;
+}
+
+button.secondary-button {
+  border: 1px solid #cbd0d4;
+  background: #fff;
+  color: #3f474e;
+}
+
+button.secondary-button:hover {
+  background: #f4f5f6;
+}
+
 label {
   display: block;
   margin: 0 0 8px;
@@ -149,5 +221,10 @@ button:hover {
 
   .settings-panel {
     padding: 22px 18px;
+  }
+
+  .avatar-controls {
+    align-items: flex-start;
+    flex-direction: column;
   }
 }
