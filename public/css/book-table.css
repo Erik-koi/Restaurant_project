@@ -51,6 +51,52 @@
   gap: 14px;
 }
 
+.reservation-controls {
+  display: grid;
+  grid-template-columns: minmax(220px, 440px);
+  margin-bottom: 16px;
+}
+
+.reservation-controls label {
+  display: grid;
+  gap: 8px;
+  color: #333;
+  font-family: "Lora", Georgia, serif;
+  font-size: 14px;
+}
+
+.reservation-controls input {
+  width: 100%;
+  min-height: 46px;
+  padding: 10px 12px;
+  border: 1px solid #c8c4c1;
+  border-radius: 4px;
+  background: #fff;
+  color: #28231f;
+  font: inherit;
+}
+
+.reservation-message {
+  min-height: 22px;
+  margin-bottom: 10px;
+  color: #5c5550;
+}
+
+.reservation-message.error {
+  color: #a23d3d;
+}
+
+.login-prompt {
+  display: inline-block;
+  margin-bottom: 14px;
+  color: #a44235;
+  font-weight: 700;
+}
+
+.login-prompt[hidden] {
+  display: none;
+}
+
 .table-card {
   display: flex;
   min-height: 90px;
@@ -59,7 +105,23 @@
   padding: 16px;
   border-radius: 3px;
   background: rgba(255, 255, 255, 0.85);
+  border: 1px solid transparent;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  color: #333;
+  cursor: pointer;
+  font: inherit;
+  text-align: left;
+  transition: border-color 0.2s, transform 0.2s;
+}
+
+.table-card:hover {
+  border-color: #a44235;
+  transform: translateY(-2px);
+}
+
+.table-card:focus-visible {
+  outline: 3px solid #a44235;
+  outline-offset: 2px;
 }
 
 .table-number {
@@ -76,6 +138,7 @@
 }
 
 .table-card p {
+  margin: 0;
   color: #333;
   font-family: "Lora", Georgia, serif;
   font-size: 20px;
@@ -91,6 +154,10 @@
 
   .table-summary {
     gap: 10px;
+  }
+
+  .reservation-controls {
+    grid-template-columns: 1fr;
   }
 
   .summary-item {

@@ -31,6 +31,28 @@
           <tbody id="usersTableBody"></tbody>
         </table>
       </section>
+
+      <section class="admin-reservations" aria-labelledby="reservations-heading">
+        <h2 id="reservations-heading">Table reservations</h2>
+        <p id="reservationsMessage" class="users-message" aria-live="polite">
+          Loading reservations...
+        </p>
+        <div class="users-panel">
+          <table>
+            <thead>
+              <tr>
+                <th>Table</th>
+                <th>Reserved by</th>
+                <th>Email</th>
+                <th>Start</th>
+                <th>End</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody id="reservationsTableBody"></tbody>
+          </table>
+        </div>
+      </section>
     </main>
     <script src="../js/admin.js"></script>
   </body>

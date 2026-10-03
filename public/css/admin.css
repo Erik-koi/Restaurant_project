@@ -55,6 +55,16 @@ h1 {
   color: #6d625a;
 }
 
+.admin-reservations {
+  margin-top: 44px;
+}
+
+.admin-reservations h2 {
+  margin: 0 0 12px;
+  font-size: 24px;
+  font-weight: 400;
+}
+
 .users-panel {
   overflow-x: auto;
   background: #fffdf9;
@@ -84,6 +94,20 @@ th {
 
 tbody tr:last-child td {
   border-bottom: 0;
+}
+
+.remove-reservation-button {
+  padding: 8px 11px;
+  border: 1px solid #b24a43;
+  border-radius: 4px;
+  background: #fff;
+  color: #9c342f;
+  cursor: pointer;
+  font: inherit;
+}
+
+.remove-reservation-button:hover {
+  background: #fff2f0;
 }
 
 @media (max-width: 600px) {

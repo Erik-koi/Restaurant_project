@@ -69,6 +69,7 @@ if (settingsBtn) {
 const logoutBtn = document.getElementById("logoutBtn");
 if (logoutBtn) {
   logoutBtn.addEventListener("click", () => {
+    fetch("/api/logout", { method: "POST" }).catch(() => {});
     localStorage.removeItem("restaurant_current_user");
     localStorage.removeItem("currentUser");
     const avatar = accountBtn?.querySelector("img");

@@ -110,19 +110,7 @@ async function handleLogin(event) {
     return;
   }
 
-  if (email === "admin" && password === "admin123") {
-    saveCurrentUser({ name: "admin", email: "admin" });
-    ensureUserFavorites("admin");
-    loginForm.reset();
-    setMessage("Login successful!", "success");
-
-    setTimeout(() => {
-      window.location.href = redirectAfterLogin || "admin.html";
-    }, 800);
-    return;
-  }
-
-  if (!validateEmail(email)) {
+  if (email !== "admin" && !validateEmail(email)) {
     setMessage("Please enter a valid email address.", "error");
     return;
   }
@@ -150,7 +138,9 @@ async function handleLogin(event) {
   setMessage("Login successful!", "success");
 
   setTimeout(() => {
-    window.location.href = redirectAfterLogin || "../index.html";
+    window.location.href =
+      redirectAfterLogin ||
+      (data.role === "admin" ? "admin.html" : "../index.html");
   }, 800);
 }
 
